@@ -1,0 +1,33 @@
+{
+    "name":         "ringoteam/phpredmon-lib",
+    "type":         "PHP 5.3 Library",
+    "description":  "Redis monitoring library",
+    "keywords":     ["redis", "monitoring"],
+    "homepage":     "http://github.com/ringoteam/phpredmon-lib",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Patrick Deroubaix",
+            "email":    "patrick.deroubaix@gmail.com"
+        },
+        {
+            "name":     "Pascal Denis",
+            "email":    "pascal.denis.75@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "knplabs/gaufrette": "*",
+        "predis/predis": "dev-master"
+    },
+    "require-dev": {
+        "knplabs/knp-gaufrette-bundle": "*",
+        "predis/predis": "dev-master",
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload":     {
+        "psr-0": {
+            "Ringo\\PhpRedmon": "src"
+        }
+    }
+}
