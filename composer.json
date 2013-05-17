@@ -1,6 +1,6 @@
 {
     "name":         "ringoteam/phpredmon-lib",
-    "type":         "PHP 5.3 Library",
+    "type":         "library",
     "description":  "Redis monitoring library",
     "keywords":     ["redis", "monitoring"],
     "homepage":     "http://github.com/ringoteam/phpredmon-lib",
