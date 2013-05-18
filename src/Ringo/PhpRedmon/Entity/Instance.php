@@ -31,10 +31,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * 
- * @ORM\Entity(repositoryClass="Ringo\PhpRedmon\Doctrine\Repository\InstanceRepository")
- * @ORM\Table(name="Instances")
+ * @ORM\MappedSuperclass
  */
-class Instance extends ModelInstance
+abstract class Instance extends ModelInstance
 {
     /**
      * ID

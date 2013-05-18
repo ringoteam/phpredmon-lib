@@ -29,11 +29,10 @@ use Doctrine\ORM\Mapping as ORM;
  * 
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
- * 
- * @ORM\Entity
- * @ORM\Table(name="Logs")
+ *
+ * @ORM\MappedSuperclass
  */
-class Log extends ModelLog
+abstract class Log extends ModelLog
 {
     /**
      * ID
