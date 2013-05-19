@@ -34,7 +34,7 @@ use Ringo\PhpRedmon\Model\Info;
  */
 class InstanceWorker 
 {
-    /**
+    /** 
      * Redis instance
      * 
      * @var \Ringo\PhpRedmon\Model\Instance

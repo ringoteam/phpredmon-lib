@@ -52,23 +52,23 @@ class InstanceLogger
     /**
      * Current instance manager
      * 
-     * @var \SnideRedmon\Manager\InstanceManager
+     * @var \Ringo\PhpRedmon\Manager\InstanceManager
      */
     protected $instanceManager;
     
     /**
      * Current instance manager
      * 
-     * @var \SnideRedmon\Manager\LogManager
+     * @var \Ringo\PhpRedmon\Manager\LogManager
      */
     protected $logManager;
 
     /**
      * Constructor
      * 
-     * @param \SnideRedmon\Manager\InstanceManager $manager
-     * @param \SnideRedmon\Manager\LogManager $manager
-     * @param \SnideRedmon\Worker\InstanceWorker $worker
+     * @param \Ringo\PhpRedmon\Manager\InstanceManager $manager
+     * @param \Ringo\PhpRedmon\Manager\LogManager $manager
+     * @param \Ringo\PhpRedmon\Worker\InstanceWorker $worker
      * @param int $nbDays
      */
     public function __construct(InstanceManager $instanceManager, LogManager $logManager, InstanceWorker $worker, $nbDays) 
@@ -105,7 +105,7 @@ class InstanceLogger
     /**
      * Get instance manager
      * 
-     * @return \SnideRedmon\Manager\InstanceManager
+     * @return \Ringo\PhpRedmon\Manager\InstanceManager
      */
     public function getInstanceManager()
     {
@@ -115,8 +115,8 @@ class InstanceLogger
     /**
      * Set instance manager
      * 
-     * @param \SnideRedmon\Manager\InstanceManager $manager
-     * @return \SnideRedmon\Logger\InstanceLogger
+     * @param \Ringo\PhpRedmon\Manager\InstanceManager $manager
+     * @return \Ringo\PhpRedmon\Logger\InstanceLogger
      */
     public function setInstanceManager(InstanceManager $manager)
     {
@@ -128,7 +128,7 @@ class InstanceLogger
     /**
      * Get instance manager
      * 
-     * @return \SnideRedmon\Manager\LogManager
+     * @return \Ringo\PhpRedmon\Manager\LogManager
      */
     public function getLogManager()
     {
@@ -138,8 +138,8 @@ class InstanceLogger
     /**
      * Set instance manager
      * 
-     * @param \SnideRedmon\Manager\LogManager $manager
-     * @return \SnideRedmon\Logger\InstanceLogger
+     * @param \Ringo\PhpRedmon\Manager\LogManager $manager
+     * @return \Ringo\PhpRedmon\Logger\InstanceLogger
      */
     public function setLogManager(LogManager $manager)
     {

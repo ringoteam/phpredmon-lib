@@ -17,10 +17,11 @@
  * and is licensed under the MIT license.
  */
 
-
 namespace Ringo\PhpRedmon\File\Repository;
 
 use Ringo\PhpRedmon\Model\Instance;
+use Gaufrette\Filesystem;
+use Ringo\PhpRedmon\Mapper\InstanceMapperInterface;
 
 /**
  * Class InstanceRepository
@@ -30,12 +31,12 @@ use Ringo\PhpRedmon\Model\Instance;
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  */
-class InstanceRepository 
+class InstanceRepository extends AbstractRepository implements InstanceMapperInterface
 {
     /**
      * File manager
      * 
-     * @var mixed 
+     * @var Filesystem 
      */
     protected $fileManager;
     
@@ -58,9 +59,10 @@ class InstanceRepository
      * 
      * @param mixed $fileManager
      */
-    public function __construct($fileManager)
+    public function __construct($fileManager, $class)
     {
         $this->fileManager = $fileManager;
+        $this->setClass($class);
     }
     
     /**
@@ -131,121 +133,5 @@ class InstanceRepository
         if($this->getFileManager()->has($key)) {
             $this->getFileManager()->delete($key);
         }
-    }
-    
-    /**
-     * Get file manager
-     * 
-     * @return mixed
-     */
-    public function getFileManager()
-    {
-        return $this->fileManager;
-    }
-    
-    /**
-     * Set file manager
-     * 
-     * @param mixed $fileManager
-     */
-    public function setFileManager($fileManager)
-    {
-        $this->fileManager = $fileManager;
-    }
-    
-    /**
-     * Get current entity class
-     * 
-     * @return string
-     */
-    public function getClass()
-    {
-        return $this->class;
-    }
-    
-    /**
-     * Set current entity class
-     * 
-     * @param string $class
-     */
-    public function setClass($class)
-    {
-        $this->class = $class;
-        $this->setHash(md5($class));                                                                                                                                                                                         
-    }
-    
-    /**
-     * Get hash
-     * 
-     * @return string
-     */
-    public function getHash()
-    {
-        return $this->hash;
-    }
-    
-    /**
-     * Set hash
-     * 
-     * @param string $hash
-     */
-    public function setHash($hash)
-    {
-        $this->hash = $hash;
-    }
-    
-    /**
-     * Load an entity by key
-     * 
-     * @param string $key
-     * @return mixed|null
-     */
-    protected function loadEntity($key)
-    {
-        $content = $this->getFileManager()->read($key);
-        if($content) {
-            return unserialize($content);
-        }
-        
-        return null;
-    }
-
-    /**
-     * Save an object entity
-     * 
-     * @param mixed $object
-     */
-    protected function persist($object)
-    {
-        if(!$object->getId()) {
-            $object->setId($this->getNextId());
-        }
-        $key = $this->getHash().$object->getId();
-        $content = serialize($object);
-        
-        $this->getFileManager()->write($key, $content, true);
-    }
-    
-    /**
-     * Get next ID for an object class
-     * 
-     * @return int
-     */
-    protected function getNextId()
-    {
-        $keys = $this->getFileManager()->keys();
-        $ids = array();
-        foreach($keys as $key) {
-            if(preg_match('/^'.$this->getHash().'/', $key)) {
-                $ids[] = str_replace($this->getHash(), '', $key);
-            }
-        }
-        if(empty($ids)) {
-            return 1;
-        }
-        
-        $maxId = max($ids);
-        
-        return $maxId + 1;
     }
 }

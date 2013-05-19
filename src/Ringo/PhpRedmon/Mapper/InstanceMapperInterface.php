@@ -20,7 +20,6 @@
 namespace Ringo\PhpRedmon\Mapper;
 
 use Ringo\PhpRedmon\Model\Instance;
-use Doctrine\Common\Persistence\ObjectRepository;
 
 /**
  * Class InstanceMapperInterface
@@ -28,7 +27,7 @@ use Doctrine\Common\Persistence\ObjectRepository;
  * @author Pascal DENIS <pascal.denis.75@gmail.com>
  * @author Patrick Deroubaix <patrick.deroubaix@gmail.com>
  */
-interface InstanceMapperInterface extends ObjectRepository
+interface InstanceMapperInterface
 {
 	public function create(Instance $instance);
 	public function update(Instance $instance);
