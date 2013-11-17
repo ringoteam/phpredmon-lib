@@ -86,7 +86,34 @@ class Instance
      * @var string 
      */
     protected $error;
-    
+
+
+    /**
+     * Add database to the list
+     *
+     * @param Database $database
+     */
+    public function addDatabase(Database $database)
+    {
+        if(!$this->getDatabases()->contains($database)) {
+            $database->setId($this->getDatabases()->count());
+            $database->setInstance($this);
+            $this->getDatabases()->add($database);
+        }
+    }
+
+    /**
+     * Remove database from the list
+     *
+     * @param Database $database
+     */
+    public function removeDatabase(Database $database)
+    {
+        if($this->getDatabases()->contains($database)) {
+            $this->getDatabases()->remove($database);
+        }
+    }
+
     /**
      * Add a log
      * 
@@ -157,7 +184,21 @@ class Instance
     {
         return $this->error;
     }
-    
+
+    /**
+     * Get databases
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getDatabases()
+    {
+        if($this->databases == null) {
+            $this->databases = new ArrayCollection();
+        }
+
+        return $this->databases;
+    }
+
     /**
      * Get logs
      * 
@@ -240,6 +281,16 @@ class Instance
     public function setLogs(ArrayCollection $logs)
     {
         $this->logs = $logs;
+    }
+
+    /**
+     * Set databases
+     *
+     * @param \Doctrine\Common\Collections\ArrayCollection $databases
+     */
+    public function setDatabases(ArrayCollection $databases)
+    {
+        $this->databases = $databases;
     }
     
     /**
