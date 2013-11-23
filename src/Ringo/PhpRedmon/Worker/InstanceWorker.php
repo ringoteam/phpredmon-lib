@@ -136,6 +136,22 @@ class InstanceWorker
     {
         return new Info($this->execute('config', array('get','*')));
     }
+
+    /**
+     * Delete keys
+     *
+     * @param $keys Keys to delete
+     * @param int $db Database index
+     * @return mixed
+     */
+    public function delete(array $keys, $db = -1)
+    {
+        if(-1 != $db) {
+            $this->execute('select', array($db));
+        }
+
+        return $this->execute('del', $keys);
+    }
     
     /**
      * Get exception
@@ -168,6 +184,54 @@ class InstanceWorker
     public function getInstance()
     {
         return $this->instance;
+    }
+
+    /**
+     * Get value
+     *
+     * @param $key Key
+     * @param int|string $db Database index
+     * @return mixed
+     */
+    public function get($key, $db = -1)
+    {
+        if(-1 != $db) {
+            $this->execute('select', array($db));
+        }
+
+        return $this->execute('get', array($key));
+    }
+
+    /**
+     * Get time to live
+     * @param $key Key
+     * @param int|string $db Database index
+     * @return mixed
+     */
+    public function ttl($key, $db = -1)
+    {
+        if(-1 != $db) {
+            $this->execute('select', array($db));
+        }
+
+        return $this->execute('ttl', array($key));
+    }
+
+    /**
+     * Search keys into db / all dbs
+     *
+     *
+     * @param $key Keyword
+     * @param int|string $db Database index
+     * @return mixed
+     */
+    public function keys($key, $db = -1)
+    {
+        if(-1 != $db) {
+            $this->execute('select', array($db));
+        }
+
+        return $this->execute('keys', array($key));
     }
     
     /**
