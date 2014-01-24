@@ -15,14 +15,13 @@
             "email":    "pascal.denis.75@gmail.com"
         }
     ],
-    "require": {
+    "require":
+    {
         "php": ">=5.3.3",
-        "knplabs/gaufrette": "*",
-        "predis/predis": "dev-master"
+        "knplabs/knp-gaufrette-bundle": "*",
+        "predis/predis": "v0.8.5"
     },
     "require-dev": {
-        "knplabs/knp-gaufrette-bundle": "*",
-        "predis/predis": "dev-master",
         "phpunit/phpunit": "3.7.*"
     },
     "autoload":     {
